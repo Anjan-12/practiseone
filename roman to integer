@@ -1,0 +1,19 @@
+class Solution(object):
+    def romanToInt(self, s):
+        if len(s) == 0 : return 
+
+        rom_dict = {"I":1,"V":5,"X":10,"L":50,"C":100,"D":500,"M":1000}
+        total=0
+        prev_value = 0
+        if len(s)==1: 
+            total =  rom_dict[s]
+        else:
+            for char in s:
+                cur_val = rom_dict[char]
+                total += cur_val
+                if (prev_value < cur_val):
+                    total-= (prev_value*2)
+                prev_value = cur_val
+                
+        return total
+		
